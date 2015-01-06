@@ -1,5 +1,5 @@
 /**
- * angular-sofa-locale-service - v0.1.0 - Tue Dec 23 2014 19:14:24 GMT+0100 (CET)
+ * angular-sofa-locale-service - v0.1.0 - Tue Jan 06 2015 15:39:42 GMT+0100 (CET)
  * http://www.sofa.io
  *
  * Copyright (c) 2014 CouchCommerce GmbH (http://www.couchcommerce.com / http://www.sofa.io) and other contributors
@@ -7,11 +7,29 @@
  * IT IS PROVIDED UNDER THE LICENSE TERMS OF THE ATTACHED LICENSE.TXT.
  */
 ;(function (angular) {
-angular.module('sofa.localeService', []);
+/**
+ * @sofadoc overview
+ * @name sofa.localeService
+ * @package angular-sofa-locale-service
+ * @distFile dist/sofaLocaleService.js
+ *
+ * @description
+ * `sofa.localeService` Angular module.
+ */
+angular.module('sofa.localeService', [])
 
-angular
-    .module('sofa.localeService')
-    .factory('localeService', ['$window', '$exceptionHandler', function ($window, $exceptionHandler) {
+/**
+ * @sofadoc service
+ * @name sofa.localeService.localeService
+ * @requires $window
+ * @requires $exceptionHandler
+ *
+ * @description
+ *
+ * The `localeService` comes with a simple solution to provide and implement
+ * l10n in an Angular app.
+ */
+.factory('localeService', ['$window', '$exceptionHandler', function ($window, $exceptionHandler) {
 
         'use strict';
 
@@ -19,11 +37,33 @@ angular
 
         self.translationData = {};
 
-        // Call this in your app's run phase to use your global translation object
+        /**
+         * @sofadoc method
+         * @name sofa.localeService.localeService#setTranslation
+         * @memberof sofa.localeService.localeService
+         *
+         * @description
+         *
+         * Call this in your app's run phase to use your global translation object.
+         *
+         * @param {object} obj translation hash
+         */
         self.setTranslationData = function (obj) {
             self.translationData = obj;
         };
 
+        /**
+         * @sofadoc method
+         * @name sofa.localeService.localeService#getTranslation
+         * @memberof sofa.localeService.localeService
+         *
+         * @description
+         *
+         * Call this in your app's run phase to use your global translation object.
+         *
+         * @param {string} path Path to translation
+         * @param {bool} failSilent Doesn't throw error of `path` is not found and set to `true.
+         */
         self.getTranslation = function (path, failSilent) {
 
             if (!path) {
